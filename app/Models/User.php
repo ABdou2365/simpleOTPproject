@@ -48,7 +48,7 @@ class User extends Authenticatable
     public function generateCode(){
         $this->timestamps = false;
         $this->code = rand(1000,9999);
-        $this->exired_at = now()->addMinutes(10);
+        $this->expired_at = now()->addMinutes(10);
         $this->save();
     }
 }
