@@ -51,4 +51,11 @@ class User extends Authenticatable
         $this->expired_at = now()->addMinutes(10);
         $this->save();
     }
+
+    public function resetCode(){
+        $this->timestamps = false;
+        $this->code = null;
+        $this->expired_at = null;
+        $this->save();
+    }
 }

@@ -29,6 +29,7 @@ class TwoFactoryController extends Controller
     {
         $user = auth()->user();
         if($user->code === $request->input('password')){
+            $user->resetCode();
             return redirect()->route('dashboard');
         }
         return redirect()->back()->withErrors(["code" => "You verification code is wrong , please try again"]);
