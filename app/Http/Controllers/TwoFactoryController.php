@@ -19,7 +19,7 @@ class TwoFactoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -27,7 +27,11 @@ class TwoFactoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+        if($user->code === $request->input('password')){
+            return redirect()->route('dashboard');
+        }
+        return redirect()->back()->withErrors(["code" => "You verification code is wrong , please try again"]);
     }
 
     /**

@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::resource('verified',TwoFactoryController::class);
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified','two_factor'])->name('dashboard');
